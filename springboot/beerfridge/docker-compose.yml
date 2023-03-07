@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+    beerfridge_db:
+        image: postgres
+        restart: unless-stopped
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: beerfridge_backend
+            POSTGRES_PASSWORD: beerfridge_db_pw
+            POSTGRES_DB: beerfridge_backend_db
+        volumes:
+            - beerfridge_db_data:/var/lib/postgresql/data
+        networks:
+            - beerfridge_db_net
+
+#    beerfridge_backend:
+#        build:
+#            context: .
+#            dockerfile: ./Dockerfile
+#        environment:
+#            DATABASE_USER: beerfridge_backend
+#            DATABASE_PASSWORD: beerfridge_db_pw
+#            DATABASE_HOST: beerfridge_db
+#            DATABASE_NAME: beerfridge_backend_db
+#            DATABASE_PORT: 5432
+#        ports:
+#            - 8080:8080
+#        depends_on:
+#            - beerfridge_db
+#        networks:
+#            - beerfridge_db_net
+
+volumes:
+    beerfridge_db_data:
+
+networks:
+    beerfridge_db_net:

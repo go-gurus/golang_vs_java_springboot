@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2023-03-07-init-database
+      author: Andreas Grohmann
+      changes:
+        sqlFile:
+          dbms: postgresql
+          encoding: utf-8
+          path: postgres/2023-03-07-init-database.sql
+          relativeToChangelogFile: true
